@@ -10,7 +10,13 @@ Http::Route::group({
 
     middlewares => [
 
+        # Check if the visitor is signed in.
         'Http::Middlewares::Auth',
+        
+        sub {
+            # TODO: Implement service middleware classes instead of only using
+            # TODO: closures.
+        }
 
     ],
 
