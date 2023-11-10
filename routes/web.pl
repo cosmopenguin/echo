@@ -20,10 +20,10 @@ Http::Route::group({
 
     Http::Route::group({
 
-        # The to prefix the http uri.
+        # The prefix of the http route.
         prefix => '/apps/echo',
 
-        # The prefix to the route can be found with internally.
+        # The prefix of the route name.
         as => 'apps.echo.',
 
     }, sub {
