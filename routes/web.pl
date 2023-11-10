@@ -13,9 +13,13 @@ Http::Route::group({
         # Check if the visitor is signed in.
         'Http::Middlewares::Auth',
         
+        # TODO: Implement service middleware classes instead of only using
+        # TODO: closures.
         sub {
-            # TODO: Implement service middleware classes instead of only using
-            # TODO: closures.
+            my $request = shift;
+            my $next = shift;
+
+            return &$next($request); 
         }
 
     ],
