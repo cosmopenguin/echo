@@ -18,6 +18,8 @@ sub welcome {
     my $self = shift;
     my $request = shift;
 
+    app()->pushToStack('scripts', servicePath('echo') . '/script.js');
+
     my $template = &_::template('echo::welcome', {
         email => user()->get('email'),
     });
