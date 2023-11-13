@@ -27,4 +27,17 @@ sub welcome {
     return $template->output();
 }
 
+sub dashboard {
+    my $self = shift;
+    my $request = shift;
+
+    app()->pushToStack('scripts', servicePath('echo') . '/script.js');
+
+    my $template = &_::template('echo::dashboard', {
+        #
+    });
+
+    return $template->output();
+}
+
 1;

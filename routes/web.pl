@@ -5,6 +5,7 @@ use warnings;
 
 use Http::Route;
 use Echo::Http::Controllers::Controller;
+use Foundation::Appify;
 
 Http::Route::group({
 
@@ -50,6 +51,43 @@ Http::Route::group({
             );
 
         }),
+
+        Http::Route::group({
+
+            # The prefix of the http route.
+            prefix => '/admin',
+
+            # The prefix of the route name.
+            as => 'admin.',
+
+            middlewares => [
+
+                sub {
+                    my $request = shift;
+                    my $next = shift;
+                    
+                    unless (user()->isAdmin()) {
+                        abort('Unauthorized', 403);
+                    }
+
+                    return &$next($request); 
+                },
+
+            ],
+
+        }, sub {
+            
+            Http::Route::get('/', sub {
+
+                my $request = shift;
+
+                return Echo::Http::Controllers::Controller->new()->dashboard(
+                    $request,
+                );
+
+            }),
+
+        });
 
     });
 
