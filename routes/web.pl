@@ -66,8 +66,8 @@ Http::Route::group({
                     my $request = shift;
                     my $next = shift;
                     
-                    unless (user()->isAdmin()) {
-                        abort('Unauthorized', 403);
+                    unless (user()->isEchoAdmin()) {
+                        abort('Unauthorized.', 403);
                     }
 
                     return &$next($request); 
