@@ -52,6 +52,16 @@ Http::Route::group({
 
         }),
 
+        Http::Route::get('/messages/{id}', sub {
+
+            my $request = shift;
+
+            return Echo::Http::Controllers::Controller->new()->showMessage(
+                $request,
+            );
+
+        }),
+
         Http::Route::group({
 
             # The prefix of the http route.

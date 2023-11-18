@@ -31,6 +31,8 @@ sub dashboard {
     my $self = shift;
     my $request = shift;
 
+    # TODO: Do something useful.
+
     app()->pushToStack('scripts', servicePath('echo') . '/script.js');
 
     my $template = &_::template('echo::dashboard', {
@@ -38,6 +40,15 @@ sub dashboard {
     });
 
     return $template->output();
+}
+
+sub showMessage {
+    my $self = shift;
+    my $request = shift;
+
+    # TODO: Do something useful.
+
+    return $self->welcome($request);
 }
 
 1;
